@@ -1,6 +1,6 @@
 
 
-from bai import *
+from card import *
 
 class Player:
   def __init__(self,name,chip):
