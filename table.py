@@ -8,7 +8,10 @@ class Table:
         self.players = []
         self.pot = 0
         self.folds = []
-    
+        self.bet =0
+        self.hand=0
+        self.round_end= False
+
     def print_cards(self):
         s = ""
         for card in self.cards: 
@@ -25,7 +28,7 @@ class Table:
         player = Player(name, chips)
         self.players.append(player)
         self.print_players()
-    
+
     def setup(self):
         print(f"Setup, press F to finish")
         while True:
@@ -46,6 +49,12 @@ class Table:
         for i in range (3):
               random_card=self.deck.draw()
               self.cards.append(random_card)
+    def set_dealer(self):
+        pass
+    def action(self):
+        for player in self.players:
+
+            return
     def round2(self):
         random_card=self.deck.draw()
         self.folds.append(random_card)
@@ -63,9 +72,31 @@ class Table:
 
 def main():
     table = Table()
-    table.setup()
-    table.round1()
-    table.print_cards()
+    table.setup() #set up nguoi choi
+
+#Start
+    #table.hand()
+    while True:
+        table.hand += 1
+        table.set_role()
+        table.deal()
+        table.action() #choi theo vong
+
+        table.round1() # bo 1 chia 3.
+        table.action()
+
+        table.round2()
+        table.action()
+
+        table.round3()
+        table.action()
+
+        table.end() # chia tien
+
+    #table.deck.shuffle()
+    #table.round1()
+    #table.action()
+    #table.round2()
 
 
 if __name__ == "__main__":
