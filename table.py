@@ -7,12 +7,13 @@ class Table:
         self.cards = []
         self.players = []
         self.pot = 0
-        self.fold = []
+        self.folds = []
     
     def print_cards(self):
         s = ""
         for card in self.cards: 
             s += f"{str(card)} "
+        print(s)
     
     def print_players(self):
         s = ""
@@ -34,7 +35,8 @@ class Table:
                 print("Table")
                 print("\n \n")
                 self.print_players()
-                return      # TODO: change to button 
+                return                      # TODO: change to button 
+            
             chips = int(input(f"{name}'s chip: ")) 
             self.add_player(name, chips)
 
@@ -62,6 +64,8 @@ class Table:
 def main():
     table = Table()
     table.setup()
+    table.round1()
+    table.print_cards()
 
 
 if __name__ == "__main__":
