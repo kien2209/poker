@@ -1,7 +1,9 @@
 import random
 
-colors = ["Club", "Diamond", "Heart", "Spade"]
+colors = ["♣️", "♦️", "❤️", "♠️"]
 numbers = [i for i in range(1,14)]
+special_names = ["J", "Q", "K", "A"]
+special_numbers = [11, 12, 13, 1]
 
 class Card:
     def __init__(self, color, number):
@@ -9,7 +11,10 @@ class Card:
         self.number = number
     
     def __str__(self):
-        return f"{self.color} {self.number}"
+        number = self.number
+        if self.number in special_numbers:
+            number = special_names[special_numbers.index(self.number)]
+        return f"{self.color} {number}"
 
 class Deck: 
     def __init__(self):
@@ -29,10 +34,6 @@ if __name__ == "__main__":
     deck = Deck()
     deck.shuffle()
 
-    for card in deck.cards:
-        print(card.number, card.color)
-
 
     random_card = deck.draw()
-    print(len(deck.cards))
     print(random_card)
